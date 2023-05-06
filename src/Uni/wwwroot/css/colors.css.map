@@ -1,0 +1,1 @@
+{"version":3,"names":[],"mappings":"","sources":["colors.less"],"sourcesContent":["@foreground: #f1fffa;\r\n@background: #454545;\r\n@danger: #d59595;\r\n@highlight: #93b7be;"],"file":"colors.css","sourceRoot":"/css"}

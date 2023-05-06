@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": false,
+    "noEmitOnError": true,
+    "removeComments": false,
+    "sourceMap": true,
+    "target": "ES2021",
+    "moduleResolution": "node16",
+    "allowSyntheticDefaultImports": true 
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}

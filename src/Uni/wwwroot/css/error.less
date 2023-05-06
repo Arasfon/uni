@@ -1,0 +1,17 @@
+﻿@import 'fonts';
+@import 'colors';
+
+body {
+    font-family: 'Gilroy', sans-serif;
+    color: @foreground;
+    background-color: @background;
+    text-align: center;
+}
+
+.text-danger {
+    color: @danger;
+}
+
+.text-secondary {
+    color: shade(@foreground, 20%);
+}
