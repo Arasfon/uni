@@ -24,6 +24,7 @@
     "typescript": "^5.0.4"
   },
   "dependencies": {
-    "animejs": "^3.2.1"
+    "animejs": "^3.2.1",
+    "flatpickr": "^4.6.13"
   }
 }
