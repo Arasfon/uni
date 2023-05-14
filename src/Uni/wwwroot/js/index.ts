@@ -7,6 +7,8 @@ function switchMenuOnOuterClick(e: Event) {
     }
 }
 
+var menuState = 0;
+
 function switchMenu() {
     const linksWrapper = document.querySelector(".nav-menu__links-wrapper") as HTMLElement;
     if (linksWrapper.hasAttribute("open")) {
@@ -16,12 +18,17 @@ function switchMenu() {
 
         document.body.style.removeProperty("overflow-y");
 
+        menuState = 0;
+
         anime({
             targets: linksWrapper,
             easing: "easeOutQuart",
             duration: 300,
             opacity: 0,
             complete: anim => {
+                if (menuState !== 0)
+                    return;
+
                 linksWrapper.style.removeProperty("opacity");
                 linksWrapper.style.removeProperty("visibility");
             }
@@ -34,12 +41,17 @@ function switchMenu() {
 
         linksWrapper.addEventListener("click", switchMenuOnOuterClick, true);
 
+        menuState = 1;
+
         anime({
             targets: linksWrapper,
             easing: "easeOutQuart",
             duration: 300,
             opacity: 1,
             complete: anim => {
+                if (menuState !== 1)
+                    return;
+
                 linksWrapper.style.visibility = "visible";
             }
         });
