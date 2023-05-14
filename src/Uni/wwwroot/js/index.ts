@@ -9,8 +9,8 @@ function switchMenuOnOuterClick(e: Event) {
 
 function switchMenu() {
     const linksWrapper = document.querySelector(".nav-menu__links-wrapper") as HTMLElement;
-    if (linksWrapper.classList.contains("nav-menu__links-wrapper--open")) {
-        linksWrapper.classList.remove("nav-menu__links-wrapper--open");
+    if (linksWrapper.hasAttribute("open")) {
+        linksWrapper.removeAttribute("open");
 
         linksWrapper.removeEventListener("click", switchMenuOnOuterClick, true);
 
@@ -27,10 +27,9 @@ function switchMenu() {
             }
         });
     } else {
-        linksWrapper.classList.add("nav-menu__links-wrapper--open");
+        linksWrapper.setAttribute("open", "");
 
         linksWrapper.style.visibility = "visible";
-
         document.body.style.overflowY = "hidden";
 
         linksWrapper.addEventListener("click", switchMenuOnOuterClick, true);
