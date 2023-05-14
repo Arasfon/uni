@@ -9,7 +9,7 @@ function switchMenuOnOuterClick(e: Event) {
     }
 }
 
-var menuState = 0;
+let menuState = 0;
 
 function switchMenu() {
     const linksWrapper = document.querySelector(".nav-menu__links-wrapper") as HTMLElement;
