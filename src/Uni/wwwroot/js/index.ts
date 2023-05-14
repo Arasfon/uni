@@ -95,7 +95,5 @@ document.getElementById("bookForm")!.addEventListener("submit", event => {
     fetch(form.action, {
         method: "post",
         body: new FormData(form)
-    });
-
-    window.location.href = "/visit/booking-thanks";
+    }).then(() => window.location.href = "/visit/booking-thanks");
 });
