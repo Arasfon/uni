@@ -7,11 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <LessCompile Remove="wwwroot\css\colors.less" />
-    <LessCompile Remove="wwwroot\css\in_development.less" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="wwwroot\js\chunks\" />
   </ItemGroup>
 
