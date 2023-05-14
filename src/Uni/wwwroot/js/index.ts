@@ -71,6 +71,7 @@ function switchMenu() {
 
 document.querySelector(".nav-menu__menu-button")!.addEventListener("click", switchMenu);
 
+// @ts-ignore
 flatpickr("#datetime",
     {
         locale: flatpickrRu,
