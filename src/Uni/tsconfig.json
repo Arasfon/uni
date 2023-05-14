@@ -6,7 +6,9 @@
     "sourceMap": true,
     "target": "ES2021",
     "moduleResolution": "node16",
-    "esModuleInterop": true 
+    "esModuleInterop": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true
   },
   "exclude": [
     "node_modules"

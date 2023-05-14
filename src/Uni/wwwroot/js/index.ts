@@ -69,7 +69,7 @@ function switchMenu() {
     }
 }
 
-document.querySelector(".nav-menu__menu-button").addEventListener("click", switchMenu);
+document.querySelector(".nav-menu__menu-button")!.addEventListener("click", switchMenu);
 
 flatpickr("#datetime",
     {
@@ -85,7 +85,7 @@ flatpickr("#datetime",
         altFormat: "d.m.Y H:i"
     });
     
-document.getElementById("bookForm").addEventListener("submit", event => {
+document.getElementById("bookForm")!.addEventListener("submit", event => {
     event.preventDefault();
 
     const form = event.target as HTMLFormElement;
