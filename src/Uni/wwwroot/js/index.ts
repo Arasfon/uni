@@ -84,7 +84,7 @@ flatpickr("#datetime",
         altInput: true,
         altFormat: "d.m.Y H:i"
     });
-    
+
 document.getElementById("bookForm")!.addEventListener("submit", event => {
     event.preventDefault();
 
