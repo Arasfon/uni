@@ -1,0 +1,81 @@
+@import 'colors';
+
+.nav-menu {
+    display: grid;
+    grid-template-columns: 1rem auto 1fr auto 1rem;
+    align-items: center;
+    padding: 2rem 0;
+    margin: 0 2rem;
+    z-index: 10;
+
+    hr {
+        border: none;
+        border-bottom: 0.2rem solid @foreground;
+        width: 100%;
+        grid-column: span 5;
+        z-index: inherit;
+        margin: 0;
+        padding: 1rem 0 0 0;
+    }
+
+    &__title {
+        font-size: 2.25rem;
+        padding: 0;
+        margin: 0;
+        grid-column: 2;
+        z-index: inherit;
+    }
+
+    &__links-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        gap: 1rem;
+        text-align: initial;
+
+        a {
+            font-weight: bold;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        @media (max-width: 60rem) {
+            flex-direction: column;
+            justify-content: flex-start;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            padding: 7rem 0 0 3rem;
+            background-color: @background;
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            z-index: 9;
+            opacity: 0;
+            visibility: hidden;
+
+            @supports (backdrop-filter: blur(10px)) or (-webkit-backdrop-filter: blur(10px)) {
+                background-color: shade(fadeout(@background, 50%), 20%);
+            }
+
+            a {
+                text-align: left;
+            }
+        }
+    }
+
+    &__menu-button {
+        display: none;
+        text-align: initial;
+        width: max-content;
+        cursor: pointer;
+        user-select: none;
+        z-index: inherit;
+        grid-column: 4;
+        font-size: 2rem;
+
+        @media (max-width: 60rem) {
+            display: inline-block;
+        }
+    }
+}

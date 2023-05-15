@@ -1,0 +1,37 @@
+@import 'colors';
+
+.card {
+    background-color: @background;
+    color: @foreground;
+    width: 35rem;
+    display: flex;
+    border: 0.3rem solid @background;
+    border-radius: 1rem;
+
+    @media (max-width: 60rem) {
+        flex-direction: column-reverse;
+    }
+
+    &__image {
+        object-fit: cover;
+        object-position: center center;
+        width: 10rem;
+        aspect-ratio: 2 / 1;
+        border-radius: 0.8rem 0 0 0.8rem;
+
+        @media (max-width: 60rem) {
+            aspect-ratio: 1 / 2;
+            height: 8rem;
+            width: initial;
+            border-radius: 0 0 0.8rem 0.8rem;
+        }
+    }
+
+    &__text-wrapper {
+        padding: 1rem;
+
+        & > p {
+            margin: 0;
+        }
+    }
+}
