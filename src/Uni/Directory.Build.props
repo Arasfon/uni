@@ -2,12 +2,12 @@
   <PropertyGroup>
     <SkipNpmInstall Condition="'$(SkipNpmInstall)' == ''">true</SkipNpmInstall>
   </PropertyGroup>
-  <ItemGroup>
+  <ItemGroup Condition="'$(DesignTimeBuild)' != 'true'">
     <LessCompile Include="**\*.less"/>
     <LessCompile Remove="node_modules\**"/>
     <UpToDateCheckInput Include="@(LessCompile)" />
   </ItemGroup>
-  <ItemGroup>
+  <ItemGroup Condition="'$(DesignTimeBuild)' != 'true'">
     <TypeScriptCompile Include="**\*.ts"/>
     <TypeScriptCompile Remove="node_modules\**"/>
     <UpToDateCheckInput Include="@(TypeScriptCompile)" />
