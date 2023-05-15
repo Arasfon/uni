@@ -172,9 +172,9 @@
                 <form id="bookForm" class="book-section__form" action="/api/book">
                     <label for="bookName">Введите Ваше имя:</label>
                     <input id="bookName" name="name" type="text" required maxlength="100" placeholder="Имя" />
-                    <p>свой номер телефона:</p>
-                    <input type="tel" name="phone" required pattern="\+?\(?[0-9]{3}\)?[\-\s\.]?[0-9]{3}[\-\s\.]?[0-9]{4,6}" placeholder="Номер телефона" />
-                    <p>и день и время бронирования:</p>
+                    <label for="bookTel">свой номер телефона:</label>
+                    <input id="bookTel" type="tel" name="phone" required pattern="\+?\(?[0-9]{3}\)?[\-\s\.]?[0-9]{3}[\-\s\.]?[0-9]{4,6}" placeholder="Номер телефона" />
+                    <label for="datetime">и день и время бронирования:</label>
                     <input id="datetime" type="text" name="date" required placeholder="Дата и время" />
                     <div>
                         <input type="checkbox" id="callOrMessageOnBook" name="message" />
