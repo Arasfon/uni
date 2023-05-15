@@ -11,7 +11,7 @@ export const debug = {
         dir: "./wwwroot/js",
         sourcemap: true
     },
-    plugins: [rollupCommonJs(), rollupNodeResolve(), rollupTs()],
+    plugins: [rollupNodeResolve(), rollupCommonJs(), rollupTs()],
     watch: {
         include: "./wwwroot/js/**/*[!.d].ts"
     }
@@ -24,7 +24,7 @@ export const release = {
         dir: "./wwwroot/js",
         sourcemap: false
     },
-    plugins: [rollupCommonJs(), rollupNodeResolve(), rollupTs(), rollupTerser()],
+    plugins: [rollupNodeResolve(), rollupCommonJs(), rollupTs(), rollupTerser()],
     watch: {
         include: "./wwwroot/js/**/*[!.d].ts"
     }
