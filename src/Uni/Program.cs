@@ -54,6 +54,8 @@ app.UseStaticFiles(new StaticFileOptions()
     ContentTypeProvider = mimeProvider
 });
 
+app.UseRouting();
+
 app.UseCors();
 
 if (!app.Environment.IsDevelopment())
@@ -69,8 +71,6 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseStatusCodePages();
-
-app.UseRouting();
 
 app.MapRazorPages();
 
