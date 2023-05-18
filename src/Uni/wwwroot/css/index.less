@@ -51,7 +51,7 @@ h3 {
         margin: 0;
         font-size: 1.5rem;
         color: shade(@foreground, 20%);
-        }
+    }
 
     &__image {
         border-radius: 4rem;
@@ -82,8 +82,17 @@ h3 {
     }
 }
 
+.contain {
+    padding-left: 3rem;
+    padding-right: 3rem;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 80rem;
+}
+
 .double-column-section {
-    padding: 3rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
     display: grid;
     grid-auto-columns: 1fr 1fr;
     grid-auto-flow: column;
