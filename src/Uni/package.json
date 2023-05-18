@@ -24,6 +24,7 @@
     "typescript": "^5.0.4"
   },
   "dependencies": {
+    "@glidejs/glide": "^3.6.0",
     "animejs": "^3.2.1",
     "flatpickr": "^4.6.13"
   }
