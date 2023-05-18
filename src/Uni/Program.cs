@@ -17,7 +17,6 @@ builder.Services.AddRouting(options => options.LowercaseUrls = true);
 
 builder.Services.AddRazorPages(options =>
 {
-    options.Conventions.AddPageRoute("/InDevelopment", "/about");
     options.Conventions.AddPageRoute("/InDevelopment", "/about/gallery");
     options.Conventions.AddPageRoute("/InDevelopment", "/visit");
     options.Conventions.AddPageRoute("/InDevelopment", "/visit/booking-thanks");
