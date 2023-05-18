@@ -35,11 +35,13 @@ if (app.Environment.IsDevelopment())
 }
 else
 {
-    app.UseExceptionHandler("/error");
+    app.UseExceptionHandler("/exception");
     app.UseHsts();
 }
 
 app.UseHttpsRedirection();
+
+app.UseStatusCodePagesWithReExecute("/error/{0}");
 
 FileExtensionContentTypeProvider mimeProvider = new();
 
@@ -69,8 +71,6 @@ if (!app.Environment.IsDevelopment())
         await next();
     });
 }
-
-app.UseStatusCodePages();
 
 app.MapRazorPages();
 

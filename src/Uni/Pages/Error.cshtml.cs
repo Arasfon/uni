@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-
-using System.Diagnostics;
+using Microsoft.AspNetCore.WebUtilities;
 
 namespace Uni.Pages;
 
@@ -9,10 +8,21 @@ namespace Uni.Pages;
 [IgnoreAntiforgeryToken]
 public class ErrorModel : PageModel
 {
-    public string? RequestId { get; set; }
+    public int Code { get; set; }
+    public string? ReasonPhrase { get; set; }
 
-    public bool ShowRequestId => !String.IsNullOrEmpty(RequestId);
+    public void OnGet(int code)
+    {
+        Code = code;
+        ReasonPhrase = ReasonPhraseFromCode(code);
+    }
 
-    public void OnGet() =>
-        RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
+    public string ReasonPhraseFromCode(int code)
+    {
+        return code switch
+        {
+            404 => "Страница не найдена",
+            _ => ReasonPhrases.GetReasonPhrase(code)
+        };
+    }
 }

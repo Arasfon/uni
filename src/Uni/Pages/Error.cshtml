@@ -1,4 +1,4 @@
-﻿@page "/error"
+﻿@page "/error/{code:int}"
 @model ErrorModel
 
 <!DOCTYPE html>
@@ -10,14 +10,7 @@
     <link rel="stylesheet" href="/css/error.css"/>
 </head>
 <body>
-<h1 class="text-danger">Ошибка.</h1>
-<h2>При обработке вашего запроса произошла ошибка.</h2>
-
-@if (Model.ShowRequestId)
-{
-    <p class="text-secondary">
-        Request ID: <code>@Model.RequestId</code>
-    </p>
-}
+    <h1 class="text-danger">@Model.Code</h1>
+    <h2>@Model.ReasonPhrase</h2>
 </body>
 </html>
