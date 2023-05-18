@@ -19,7 +19,6 @@ builder.Services.AddRazorPages(options =>
 {
     options.Conventions.AddPageRoute("/InDevelopment", "/about/gallery");
     options.Conventions.AddPageRoute("/InDevelopment", "/visit");
-    options.Conventions.AddPageRoute("/InDevelopment", "/visit/booking-thanks");
     options.Conventions.AddPageRoute("/InDevelopment", "/menu");
     options.Conventions.AddPageRoute("/InDevelopment", "/events");
     options.Conventions.AddPageRoute("/InDevelopment", "/attribution");
