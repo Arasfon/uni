@@ -3,11 +3,22 @@ import rollupNodeResolve from "@rollup/plugin-node-resolve";
 import rollupCommonJs from "@rollup/plugin-commonjs";
 import rollupTerser from "@rollup/plugin-terser";
 import { globSync } from "glob";
+import path from "path";
+
+function getFiles() {
+    const files = globSync("./wwwroot/js/**/*[!.d].ts");
+    const filesObject = {};
+    for (let i = 0; i < files.length; i++) {
+        filesObject[path.relative("./wwwroot/js", files[i]).replace("\\", "/").replace(/\.[^\/.]+$/, "")] = files[i];
+    }
+    return filesObject;
+}
 
 export const debug = {
-    input: globSync("./wwwroot/js/**/*[!.d].ts"),
+    input: getFiles(),
     output: {
         chunkFileNames: "chunks/[name]-[hash].js",
+        entryFileNames: "[name].js",
         dir: "./wwwroot/js",
         sourcemap: true
     },
@@ -18,9 +29,10 @@ export const debug = {
 };
 
 export const release = {
-    input: globSync("./wwwroot/js/**/*[!.d].ts"),
+    input: getFiles(),
     output: {
         chunkFileNames: "chunks/[name]-[hash].js",
+        entryFileNames: "[name].js",
         dir: "./wwwroot/js",
         sourcemap: false
     },
