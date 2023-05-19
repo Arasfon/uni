@@ -1,4 +1,6 @@
+using FluentValidation;
 using Microsoft.AspNetCore.StaticFiles;
+using Uni.Controllers.Api;
 
 // Configure services
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
@@ -16,6 +18,8 @@ builder.Services.AddCors(options =>
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
 
 builder.Services.AddRazorPages();
+
+builder.Services.AddScoped<IValidator<Book.Booking>, Book.Booking.Validator>();
 
 WebApplication app = builder.Build();
 

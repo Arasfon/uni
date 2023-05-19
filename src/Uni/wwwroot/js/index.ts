@@ -10,25 +10,32 @@ flatpickr("#datetime",
     {
         locale: flatpickrRu,
         allowInput: true,
-        disableMobile: true,
         minDate: "today",
         enableTime: true,
         minTime: "10:00",
-        maxTime: "20:00",
+        maxTime: "19:30",
         minuteIncrement: 15,
         altInput: true,
-        altFormat: "d.m.Y H:i"
+        altFormat: "d.m.Y H:i",
+        dateFormat: "Z"
     });
 
-document.getElementById("bookForm")!.addEventListener("submit", event => {
+document.getElementById("bookForm")!.addEventListener("submit", async event => {
     event.preventDefault();
 
     const form = event.target as HTMLFormElement;
 
-    form.setAttribute("disabled", "");
-    
-    fetch(form.action, {
-        method: "post",
-        body: new FormData(form)
-    }).then(() => window.location.href = "/visit/booking-thanks");
+    console.log(new FormData(form));
+
+    const response = await fetch(form.action,
+        {
+            method: "post",
+            body: new FormData(form)
+        });
+
+    if (response.ok)
+        window.location.href = "/visit/booking-thanks";
+    else {
+        (document.getElementById("datetime") as HTMLInputElement).setCustomValidity("Проверьте правильность введённых данных.");
+    }
 });
