@@ -25,8 +25,6 @@ document.getElementById("bookForm")!.addEventListener("submit", async event => {
 
     const form = event.target as HTMLFormElement;
 
-    console.log(new FormData(form));
-
     const response = await fetch(form.action,
         {
             method: "post",
