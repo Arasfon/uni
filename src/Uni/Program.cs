@@ -15,10 +15,7 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
 
-builder.Services.AddRazorPages(options =>
-{
-    options.Conventions.AddPageRoute("/InDevelopment", "/menu");
-});
+builder.Services.AddRazorPages();
 
 WebApplication app = builder.Build();
 
