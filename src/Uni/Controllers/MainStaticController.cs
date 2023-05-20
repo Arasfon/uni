@@ -19,16 +19,23 @@ public partial class MainStaticController : Controller
         path = path?.Trim('/') ?? "index";
         
         // Validate path
-        if (PathRegex().IsMatch(path))
-        {
-            string fileToSearch = Path.Combine(_webHostEnvironment.WebRootPath, path + ".html");
+        if (!PathRegex().IsMatch(path))
+            return NotFound();
 
-            string fullPath = Path.GetFullPath(fileToSearch);
+        string fullPath = Path.GetFullPath(Path.Combine(_webHostEnvironment.WebRootPath, path));
 
-            // Absolute path check
-            if (System.IO.File.Exists(fileToSearch) && fullPath.StartsWith(_webHostEnvironment.WebRootPath, StringComparison.OrdinalIgnoreCase))
-                return PhysicalFile(fullPath, "text/html");
-        }
+        // Directory index and absolute path check
+        if (Directory.Exists(fullPath) &&
+            System.IO.File.Exists(Path.Combine(fullPath, "index.html")) &&
+            fullPath.StartsWith(_webHostEnvironment.WebRootPath, StringComparison.OrdinalIgnoreCase))
+            return PhysicalFile(Path.Combine(fullPath, "index.html"), "text/html");
+
+        string fileToSearch = fullPath + ".html";
+
+        // Absolute path check
+        if (System.IO.File.Exists(fileToSearch) &&
+            fullPath.StartsWith(_webHostEnvironment.WebRootPath, StringComparison.OrdinalIgnoreCase))
+            return PhysicalFile(fileToSearch, "text/html");
 
         return NotFound();
     }
