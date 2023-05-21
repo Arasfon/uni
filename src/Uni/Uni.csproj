@@ -13,6 +13,7 @@
   <ItemGroup>
     <PackageReference Include="FluentValidation" Version="11.5.2" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.5.2" />
+    <PackageReference Include="WebMarkupMin.AspNetCore7" Version="2.13.9" />
   </ItemGroup>
 
 </Project>

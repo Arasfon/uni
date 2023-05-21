@@ -1,6 +1,10 @@
 using FluentValidation;
+
 using Microsoft.AspNetCore.StaticFiles;
+
 using Uni.Controllers.Api;
+
+using WebMarkupMin.AspNetCore7;
 
 // Configure services
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
@@ -18,6 +22,9 @@ builder.Services.AddCors(options =>
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
 
 builder.Services.AddRazorPages();
+
+builder.Services.AddWebMarkupMin(options => options.DisablePoweredByHttpHeaders = true)
+    .AddHtmlMinification();
 
 builder.Services.AddScoped<IValidator<Book.Booking>, Book.Booking.Validator>();
 
@@ -46,10 +53,12 @@ if (app.Environment.IsDevelopment())
     mimeProvider.Mappings[".ts"] = "text/prs.typescript";
 }
 
-app.UseStaticFiles(new StaticFileOptions()
+app.UseStaticFiles(new StaticFileOptions
 {
     ContentTypeProvider = mimeProvider
 });
+
+app.UseWebMarkupMin();
 
 app.UseRouting();
 
