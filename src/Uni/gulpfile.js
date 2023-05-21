@@ -42,7 +42,7 @@ gulp.task("less:release",
 
 gulp.task("rollup:debug",
     function() {
-        return exec("rollup -c --environment BUNDLE_TYPE:debug", (error, stdout, stderr) => {
+        return exec("npx rollup -c --environment BUNDLE_TYPE:debug", (error, stdout, stderr) => {
             if (error) {
                 console.error(`${error.message}`);
                 return;
@@ -59,7 +59,7 @@ gulp.task("rollup:debug",
 
 gulp.task("rollup:release",
     function() {
-        return exec("rollup -c", (error, stdout, stderr) => {
+        return exec("npx rollup -c", (error, stdout, stderr) => {
             if (error) {
                 console.error(`${error.message}`);
                 return;
