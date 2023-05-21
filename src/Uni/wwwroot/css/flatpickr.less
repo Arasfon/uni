@@ -1,1 +1,19 @@
+@import 'colors';
 @import (inline) '../../node_modules/flatpickr/dist/flatpickr.css';
+
+input {
+    font-family: 'Gilroy', sans-serif;
+
+    &[type="datetime-local"] {
+        padding: 0.8rem 1.6rem;
+        display: inline-block;
+        border: 0.1rem solid #ccc;
+        border-radius: 1rem;
+        outline-offset: -0.1rem;
+        transition: outline linear 0.1s;
+
+        &:focus {
+            outline: 0.2rem solid @background;
+        }
+    }
+}
