@@ -9,9 +9,7 @@ export default class MobileNavigation {
     }
 
     private switchMenuOnOuterClick(e: Event) {
-        if (e.target === e.currentTarget) {
-            this.switchMenu();
-        }
+        this.switchMenu();
     }
 
     switchMenu() {
