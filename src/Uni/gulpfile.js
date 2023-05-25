@@ -20,6 +20,23 @@ gulp.task("less:debug",
             .pipe(gulp.dest("./wwwroot/css"));
     });
 
+gulp.task("less:debug:exec",
+    function() {
+        return exec("gulp less:debug", (error, stdout, stderr) => {
+            if (error) {
+                console.error(`${error.message}`);
+                return;
+            }
+
+            if (stderr) {
+                console.error(`${stderr}`);
+                return;
+            }
+
+            console.log(`${stdout}`);
+        });
+    });
+
 gulp.task("less:minified",
     function() {
         return gulp.src("./wwwroot/css/**/*.less")
@@ -42,7 +59,7 @@ gulp.task("less:release",
 
 gulp.task("rollup:debug",
     function() {
-        return exec("rollup -c --environment BUNDLE_TYPE:debug", (error, stdout, stderr) => {
+        return exec("npx rollup -c --environment BUNDLE_TYPE:debug", (error, stdout, stderr) => {
             if (error) {
                 console.error(`${error.message}`);
                 return;
@@ -59,7 +76,7 @@ gulp.task("rollup:debug",
 
 gulp.task("rollup:release",
     function() {
-        return exec("rollup -c", (error, stdout, stderr) => {
+        return exec("npx rollup -c", (error, stdout, stderr) => {
             if (error) {
                 console.error(`${error.message}`);
                 return;
@@ -97,7 +114,7 @@ gulp.task("clean",
 
 gulp.task("watch",
     function() {
-        gulp.watch("./wwwroot/css/**/*.less", gulp.series("less:debug"));
+        gulp.watch("./wwwroot/css/**/*.less", gulp.series("less:debug:exec"));
         gulp.watch("./wwwroot/js/**/*[!.d].ts", gulp.series("rollup:debug"));
     });
 
