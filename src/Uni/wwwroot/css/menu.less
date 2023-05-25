@@ -14,3 +14,87 @@ th, td {
 td:nth-child(2) {
     text-align: center;
 }
+
+.more-icon {
+    width: 0.8rem;
+    padding-left: 0.5rem;
+}
+
+dialog {
+    width: min(100rem, 90%);
+    height: min(50rem, 80%);
+    top: 0;
+    opacity: 0;
+    transition: opacity ease-out 0.2s;
+    border: none;
+    border-radius: 4rem;
+    color: @foreground;
+    background-color: @background;
+
+    &::backdrop {
+        background-color: fadeout(@background, 50%);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+
+        @supports (backdrop-filter: blur(10px)) or (-webkit-backdrop-filter: blur(10px)) {
+            background-color: shade(fadeout(@background, 50%), 20%);
+        }
+    }
+
+    &[open] {
+        display: block;
+        opacity: 1;
+        transition: opacity ease-out 0.2s;
+    }
+
+    & > div {
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        padding: 1rem;
+        display: grid;
+        grid-template-columns: 1fr max(auto, 25%);
+        grid-template-rows: 1fr auto;
+        gap: 1rem;
+        position: relative;
+
+        #dialog__image {
+            background-image: url(/img/about/gallery/1.webp);
+            background-size: cover;
+            background-position: center;
+            border-radius: 4rem;
+            grid-column: span 2;
+        }
+
+        #dialog__name {
+            margin: 0;
+            font-size: 2.3rem;
+        }
+
+        #dialog__description {
+            margin: 0.5rem 0;
+            font-size: 1.2rem;
+        }
+
+        #dialog__additional-info {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        #dialog__price {
+            margin: 0;
+            align-self: end;
+            font-size: 2rem;
+            text-align: right;
+        }
+
+        #dialog__close {
+            margin: 0;
+            position: absolute;
+            top: 3rem;
+            right: 3rem;
+            font-size: 1.5rem;
+            text-shadow: 0 0 5px @background;
+        }
+    }
+}
