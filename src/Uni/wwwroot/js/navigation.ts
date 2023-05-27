@@ -19,7 +19,7 @@ export default class MobileNavigation {
 
             linksWrapper.removeEventListener("click", this.outerClickLambda);
 
-            document.body.style.removeProperty("overflow-y");
+            document.body.classList.remove("no-scroll");
 
             this.menuState = 0;
 
@@ -40,7 +40,7 @@ export default class MobileNavigation {
             linksWrapper.setAttribute("open", "");
 
             linksWrapper.style.visibility = "visible";
-            document.body.style.overflowY = "hidden";
+            document.body.classList.add("no-scroll");
 
             linksWrapper.addEventListener("click", this.outerClickLambda);
 
