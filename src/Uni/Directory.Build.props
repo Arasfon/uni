@@ -1,6 +1,6 @@
 <Project>
   <PropertyGroup>
-    <SkipNpmInstall Condition="'$(SkipNpmInstall)' == ''">true</SkipNpmInstall>
+    <SkipNpmInstall Condition="'$(SkipNpmInstall)' == ''">false</SkipNpmInstall>
   </PropertyGroup>
   <ItemGroup Condition="'$(DesignTimeBuild)' != 'true'">
     <LessCompile Include="**\*.less"/>

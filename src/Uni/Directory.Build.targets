@@ -20,13 +20,6 @@
       CleanLess;
       CleanRollup
     </CleanDependsOn>
-    <PublishPipelineCollectFilesCore>
-      CompileLessDebug;
-      CompileLessRelease;
-      RollupBundleDebug;
-      RollupBundleRelease;
-      $(PublishPipelineCollectFilesCore)
-    </PublishPipelineCollectFilesCore>
   </PropertyGroup>
   <Target Name="CompileLessDebug" Condition="'$(Configuration)' == 'Debug' AND '$(DesignTimeBuild)' != 'true'">
     <Exec Command="npm install" Condition="'$(SkipNpmInstall)' != 'true'" />
