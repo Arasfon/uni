@@ -1,9 +1,20 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Http.Extensions
+
+@{
     if (ViewBag.TitlePrefix is not null)
         ViewBag.Title = $"{ViewBag.TitlePrefix} — Meowy";
 
     ViewBag.Title ??= "Meowy";
     ViewBag.Description ??= "Meowy";
+
+    ViewBag.OpenGraph ??= new Dictionary<string, string>();
+    ViewBag.OpenGraph?.TryAdd("title", ViewBag.Title);
+    ViewBag.OpenGraph?.TryAdd("description", ViewBag.Description);
+    ViewBag.OpenGraph?.TryAdd("type", "website");
+    ViewBag.OpenGraph?.TryAdd("image", new Uri(new Uri($"{Context.Request.Scheme}://{Context.Request.Host}"), "img/hero.webp").AbsoluteUri);
+    ViewBag.OpenGraph?.TryAdd("url", Context.Request.GetEncodedUrl());
+    ViewBag.OpenGraph?.TryAdd("locale", "ru_RU");
+    ViewBag.OpenGraph?.TryAdd("site_name", "Meowy");
 }
 
 <!DOCTYPE html>
@@ -13,6 +24,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@ViewBag.Title</title>
     <meta name="description" content="@ViewBag.Description">
+    @foreach (KeyValuePair<string, string> pair in ViewBag.OpenGraph)
+    {
+        <meta name="og:@pair.Key" content="@pair.Value">
+    }
     @if (IsSectionDefined("Styles"))
     {
         @await RenderSectionAsync("Styles", false)
