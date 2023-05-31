@@ -1,17 +1,18 @@
-﻿@page "/exception"
+﻿@page
 @model ExceptionModel
 
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Ошибка – Meowy</title>
-    <link rel="stylesheet" href="/css/exception.css"/>
-</head>
-<body>
-    <h1 class="text-danger">Ошибка.</h1>
-    <h2>При обработке вашего запроса произошла ошибка.</h2>
+@{
+    ViewBag.TitlePrefix = "Ошибка";
+    ViewBag.Description = "Ошибка.";
+}
+
+@section Styles
+{
+    <link rel="stylesheet" href="~/css/exception.css" asp-append-version="true" />
+}
+
+<h1 class="text-danger">Ошибка.</h1>
+<h2>При обработке вашего запроса произошла ошибка.</h2>
 
 @if (Model.ShowRequestId)
 {
@@ -19,5 +20,3 @@
         Request ID: <code>@Model.RequestId</code>
     </p>
 }
-</body>
-</html>

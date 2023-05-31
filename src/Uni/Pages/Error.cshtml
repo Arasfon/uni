@@ -1,16 +1,15 @@
-﻿@page "/error/{code:int}"
+﻿@page "{code:int}"
 @model ErrorModel
 
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Ошибка – Meowy</title>
-    <link rel="stylesheet" href="/css/error.css"/>
-</head>
-<body>
-    <h1 class="text-danger">@Model.Code</h1>
-    <h2>@Model.ReasonPhrase</h2>
-</body>
-</html>
+@{
+    ViewBag.TitlePrefix = $"{Model.Code}";
+    ViewBag.Description = $"Ошибка {Model.Code}.";
+}
+
+@section Styles
+{
+    <link rel="stylesheet" href="~/css/error.css" asp-append-version="true"/>
+}
+
+<h1 class="text-danger">@Model.Code</h1>
+<h2>@Model.ReasonPhrase</h2>

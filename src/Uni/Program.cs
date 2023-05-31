@@ -1,8 +1,10 @@
 using FluentValidation;
 
+using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.AspNetCore.StaticFiles;
 
 using Uni.Controllers.Api;
+using Uni.Transformers;
 
 using WebMarkupMin.AspNetCore7;
 
@@ -21,7 +23,8 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
 
-builder.Services.AddRazorPages();
+builder.Services.AddRazorPages(options =>
+    options.Conventions.Add(new PageRouteTransformerConvention(new SlugifyParameterTransformer())));
 
 builder.Services.AddWebMarkupMin(options => options.DisablePoweredByHttpHeaders = true)
     .AddHtmlMinification();

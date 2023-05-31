@@ -44,6 +44,7 @@ public partial class Book : Controller
     }
 
     [HttpPost]
+    [ValidateAntiForgeryToken]
     public IActionResult Post([FromForm] Booking booking)
     {
         ValidationResult validationResult = _validator.Validate(booking);
